@@ -64,6 +64,7 @@ class Connection
         $reporting = error_reporting(0);
 
         $params = $this->getIniParams();
+        
 
         $mysqli = $this->connID = new \mysqli($params['server'], $params['user'], $params['pass'], $params['db']);
         error_reporting($reporting);
@@ -74,7 +75,7 @@ class Connection
             exit();
         }
 
-       
+        
         mysqli_set_charset($mysqli, 'utf8');
     }
 
