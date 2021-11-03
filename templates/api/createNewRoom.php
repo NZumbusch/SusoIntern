@@ -13,6 +13,10 @@ if (isset($_SESSION["user"])) {
         $api->throw("Requesterror", "Please provide roomName.");
     }   
 
+    if (count($user->get_rooms()) > 50) {
+        $api->throw("Permissionerror", "Normal Accounts cannot create new rooms if they are alreay in 50+. Please leave rooms in order to be able to create a new one.");
+    }
+
     $api->send($user->createNewRoom($input["roomName"]), "Created new room.");
 }
 ?>
